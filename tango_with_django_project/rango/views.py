@@ -6,6 +6,13 @@ from rango.forms import CategoryForm
 from django.shortcuts import redirect
 from django.urls import reverse
 
+def about(request):
+# prints out whether the method is a GET or a POST
+print(request.method)
+# prints out the user name, if no one is logged in it prints `AnonymousUser`
+print(request.user)
+return render(request, 'rango/about.html', {})
+
 def index(request):
 # Query the database for a list of ALL categories currently stored.
 # Order the categories by the number of likes in descending order.
