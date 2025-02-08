@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Add a New Page</title>
+  </head>
+  <body>
+    <h1>Add a New Page</h1>
+
+    {% if category %}
+    <h2>Adding a page to {{ category.name }}</h2>
+    {% else %}
+    <h2>Category not found!</h2>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <input type="submit" name="submit" value="Add Page" />
+    </form>
+
+    <a href="{% url 'rango:index' %}">Back to Home</a>
+  </body>
+</html>
