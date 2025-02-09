@@ -1,8 +1,8 @@
-Rango - A Django Project
+# **Rango - A Django Project**
 
 This is a university project following the first 10 chapters of the Tango with Django book. The project is built using Django and covers fundamental concepts such as models, views, templates, forms, authentication, and session handling.
 
-Installation and Setup
+# **Installation and Setup**
 
 1. Clone the Repository
    ~git clone <your-repository-url>
@@ -13,9 +13,9 @@ Installation and Setup
    ~python -m venv venv
    ~venv\Scripts\activate
 
-b) On macOS/Linux:
-~python3 -m venv venv
-~source venv/bin/activate
+   b) On macOS/Linux:
+   ~python3 -m venv venv
+   ~source venv/bin/activate
 
 3. Install Dependencies
    ~pip install -r requirements.txt
@@ -33,7 +33,7 @@ Follow the prompts to set up a username, email, and password.
 
 Access the project at: http://127.0.0.1:8000/
 
-Additional Commands
+# **Additional Commands**
 
 1. Running the Django Shell
    ~python manage.py shell
@@ -47,8 +47,10 @@ Additional Commands
 4. Deactivating Virtual Environment
    ~deactivate
 
-Contributing
+# **Contributing**
+
 ~Feel free to fork this repository and submit pull requests.
 
-License
+# **License**
+
 ~This project is for educational purposes and follows the structure of Tango with Django.
