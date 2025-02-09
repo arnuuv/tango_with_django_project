@@ -153,3 +153,32 @@ def register(request):
         'profile_form': profile_form,
         'registered': registered
     })
+
+def user_login(request):
+    # If the request is a HTTP POST, try to pull out the relevant information.
+    if request.method == 'POST':
+        # Gather the username and password provided by the user.
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Use Django's machinery to attempt authentication.
+        user = authenticate(username=username, password=password)
+
+        # If we have a User object, the details are correct.
+        if user:
+            # Is the account active?
+            if user.is_active:
+                # Log the user in and redirect.
+                login(request, user)
+                return redirect(reverse('rango:index'))
+            else:
+                # An inactive account was used.
+                return HttpResponse("Your Rango account is disabled.")
+        else:
+            # Bad login details.
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")
+
+    # Not a POST request, display the login form.
+    else:
+      return render(request, 'rango/login.html')
