@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from rango.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 def about(request):
 # prints out whether the method is a GET or a POST
@@ -183,3 +184,6 @@ def user_login(request):
     # Not a POST request, display the login form.
     else:
       return render(request, 'rango/login.html')
+
+def restricted(request):
+  return HttpResponse("Since you're logged in, you can see this text!")

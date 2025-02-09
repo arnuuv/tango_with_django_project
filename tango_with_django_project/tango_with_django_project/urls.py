@@ -29,3 +29,4 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
 ]
 
+LOGIN_URL = 'rango:login'
