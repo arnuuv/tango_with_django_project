@@ -11,14 +11,14 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
 def about(request):
-# prints out whether the method is a GET or a POST
-print(request.method)
-# prints out the user name, if no one is logged in it prints `AnonymousUser`
-print(request.user)
-if request.session.test_cookie_worked():
-  print("TEST COOKIE WORKED!")
-  request.session.delete_test_cookie()
-return render(request, 'rango/about.html', {})
+    # prints out whether the method is a GET or a POST
+    print(request.method)
+    # prints out the user name, if no one is logged in it prints `AnonymousUser`
+    print(request.user)
+    if request.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
+    return render(request, 'rango/about.html', {})
 
 def index(request):
   category_list = Category.objects.order_by('-likes')[:5]
@@ -60,24 +60,24 @@ def show_category(request, category_name_slug):
   return render(request, 'rango/category.html', context=context_dict)
 
 def add_category(request):
-  form = CategoryForm()
-  # A HTTP POST?
-  if request.method == 'POST':
-  form = CategoryForm(request.POST)
-  # Have we been provided with a valid form?
-    if form.is_valid():
-    # Save the new category to the database.
-      form.save(commit=True)
-# Now that the category is saved, we could confirm this.
-# For now, just redirect the user back to the index view.
-      return redirect('/rango/')
-    else:
-# The supplied form contained errors
-# just print them to the terminal.
-    print(form.errors)
-# Will handle the bad form, new form, or no form supplied cases.
-# Render the form with error messages (if any).
-return render(request, 'rango/add_category.html', {'form': form})
+    form = CategoryForm()
+    # A HTTP POST?
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+            # Now that the category is saved, we could confirm this.
+            # For now, just redirect the user back to the index view.
+            return redirect('/rango/')
+        else:
+            # The supplied form contained errors
+            # just print them to the terminal.
+            print(form.errors)
+    # Will handle the bad form, new form, or no form supplied cases.
+    # Render the form with error messages (if any).
+    return render(request, 'rango/add_category.html', {'form': form})
 
 
 def add_page(request, category_name_slug):
@@ -195,10 +195,10 @@ def restricted(request):
 # access the view.
 @login_required
 def user_logout(request):
-# Since we know the user is logged in, we can now just log them out.
-  logout(request)
-# Take the user back to the homepage.
-  return redirect(reverse('rango:index'))
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+    # Take the user back to the homepage.
+    return redirect(reverse('rango:index'))
 
 def visitor_cookie_handler(request, response):
     # Get the number of visits to the site.
