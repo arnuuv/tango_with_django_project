@@ -15,4 +15,5 @@ name='show_category'),
 path('add_category/', views.add_category, name='add_category'),
 path('register/', views.register, name='register'), # New mapping!
 path('restricted/', views.restricted, name='restricted'),
+path('logout/', views.user_logout, name='logout'),
 ]
