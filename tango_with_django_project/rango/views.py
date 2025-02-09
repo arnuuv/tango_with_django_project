@@ -6,6 +6,7 @@ from rango.forms import CategoryForm
 from django.shortcuts import redirect
 from django.urls import reverse
 from rango.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
 
 def about(request):
 # prints out whether the method is a GET or a POST
